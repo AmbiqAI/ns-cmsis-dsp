@@ -71,7 +71,7 @@ ARM_DSP_ATTRIBUTE void arm_q15_to_float(
   {
       /* C = (float32_t) A / 32768 */
       /* convert from q15 to float and then store the results in the destination buffer */
-      vecDst = vldrhq_s32(pSrcVec);
+      vecDst = (q15x8_t)vldrhq_s32(pSrcVec);
       pSrcVec += 4;
       vstrwq(pDst, vcvtq_n_f32_s32((int32x4_t)vecDst, 15));
       pDst += 4;
